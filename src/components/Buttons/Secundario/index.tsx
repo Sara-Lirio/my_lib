@@ -1,11 +1,16 @@
 import React from "react";
-import styled from "styled-components"; 
+import styled, { css } from "styled-components";
+export interface ButtonSecundarioProps {
+    texto?: string
+    tipo?: 'primario' | 'secundario'
+    onClick?: () => void
+}
 
-const Button = styled.button`
-    color: #4B4646;
-    background-color: transparent;
+const Button = styled.button<ButtonSecundarioProps>`
+    color:  ${(props: ButtonSecundarioProps) => props.tipo === 'primario' ? '#4B4646' : '#FFF'};
+    background-color: ${(props: ButtonSecundarioProps) => props.tipo === 'primario' ? '#FFF' : '#4B4646'};
     text-transform: uppercase;
-    border: 1px solid #4B4646;
+    border: 1px solid  ${(props: ButtonSecundarioProps) => props.tipo === 'primario' ? '#4B4646' : 'transparent'};;
     font-size: 18px;
     font-size: 16px;
     padding: 8px 20px;
@@ -14,15 +19,27 @@ const Button = styled.button`
     box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.1);
     cursor: pointer;
 
-    &:hover {
-        border-color: #E9C7A8;
-        color: #E9C7A8;
+    ${(props: ButtonSecundarioProps) => props.tipo === 'primario'
+        ? css`  
+          &:hover {
+                border-color: #4B4646;
+                color: #FFF;
+                background-color: #4B4646;
+        }
+    `
+        : css`
+            &:hover {
+               background-color: #E9C7A8;
+           }
+    `
     }
-
 `
 
-export const ButtonSecundario = () => {
+export const ButtonSecundario = ({ texto, onClick, tipo = 'primario' }: ButtonSecundarioProps) => {
     return (
-        <Button>Login</Button>
+        <Button onClick={onClick}
+            tipo={tipo}
+        >{texto}
+        </Button>
     )
 }

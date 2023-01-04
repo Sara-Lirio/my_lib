@@ -8,5 +8,7 @@ export const Thing: FC<Props> = ({ children }) => {
   return <div>{children || `the snozzberries taste like snozzberries`}</div>;
 };
 
-
-export * from './components/Buttons/Primario'
+export * from './components/Buttons/Principal'
+export * from './components/Buttons/Secundario'
+export * from './components/Inputs/Primario'
+export * from './components/Inputs/Busca'
