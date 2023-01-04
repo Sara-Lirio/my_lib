@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof ButtonPrincipal> = (args) => <ButtonPrinci
 export const BotaoPrincipal = Template.bind({});
 
 BotaoPrincipal.args = {
-    texto: 'Botão Principal',
+    texto: 'Botão',
     tipo: 'primario'
 } as ButtonPrincipalProps
